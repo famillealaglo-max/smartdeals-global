@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Discover practical digital tools for creators, freelancers and small businesses.">
+<title>SmartDeals Global — Find tools that help you work smarter</title>
+<style>
+:root{--ink:#172033;--muted:#657089;--brand:#5b55e7;--line:#e7e9f2;--bg:#f7f8fc}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:inherit}.wrap{max-width:1120px;margin:auto;padding:0 22px}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:14px}
+.logo{font-weight:850;font-size:21px;letter-spacing:-.7px;white-space:nowrap}.logo span{color:var(--brand)}
+.navright{display:flex;align-items:center;gap:15px}.nav small{color:var(--muted)}
+.langswitch{display:flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.langswitch button{border:0;border-radius:8px;padding:8px 11px;background:transparent;color:var(--muted);font-weight:750;cursor:pointer}
+.langswitch button.active{background:#eae9ff;color:var(--brand)}
+.hero{padding:65px 0 48px;background:linear-gradient(135deg,#eeedff,#f8f9ff 60%,#e8f7f4);border-radius:28px;margin:8px auto 30px}
+.eyebrow{color:var(--brand);font-weight:750;text-transform:uppercase;letter-spacing:1.5px;font-size:12px}
+.hero h1{font-size:clamp(36px,6vw,60px);line-height:1.03;letter-spacing:-2.5px;max-width:720px;margin:14px 0}
+.hero p{color:var(--muted);font-size:18px;max-width:620px;line-height:1.6}
+.search{display:flex;gap:10px;max-width:560px;margin-top:26px}
+.search input{flex:1;min-width:0;padding:15px 17px;border:1px solid var(--line);border-radius:12px;font-size:15px}
+.search button,.btn{border:0;border-radius:12px;background:var(--brand);color:white;font-weight:700;padding:14px 19px;text-decoration:none;cursor:pointer}
+.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:36px 0 16px}
+.sectionhead h2{margin:0;font-size:25px;letter-spacing:-.7px}.sectionhead p{margin:5px 0 0;color:var(--muted)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+.filter{border:1px solid var(--line);background:white;border-radius:999px;padding:9px 14px;cursor:pointer;color:var(--muted)}
+.filter.active{background:#eae9ff;color:var(--brand);border-color:#d5d3ff}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;min-height:245px;box-shadow:0 5px 18px #1d2b4a08}
+.icon{width:42px;height:42px;border-radius:12px;background:#efefff;display:grid;place-items:center;font-size:21px}
+.tag{font-size:11px;font-weight:750;color:var(--brand);text-transform:uppercase;letter-spacing:.8px;margin-top:16px}
+.card h3{margin:7px 0;font-size:19px}.card p{color:var(--muted);line-height:1.5;font-size:14px;margin:0 0 18px}
+.card .btn{margin-top:auto;text-align:center;font-size:14px}
+.note{background:white;border:1px solid var(--line);padding:18px;border-radius:14px;color:var(--muted);font-size:13px;line-height:1.6;margin:28px 0}
+.footer{padding:30px 0 45px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.empty{color:var(--muted);padding:25px 0;display:none}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.hero{padding:42px 0 34px}.search{flex-direction:column}.search button{width:100%}.nav small{display:none}.nav{align-items:flex-start}.navright{gap:7px}}
+</style>
+</head>
+<body>
+<header class="wrap nav">
+  <div class="logo">SmartDeals<span>Global</span></div>
+  <div class="navright">
+    <small data-i18n="tagline">Useful tools. Smarter work.</small>
+    <div class="langswitch" role="group" aria-label="Language selection">
+      <button type="button" id="lang-en" class="active" aria-pressed="true">EN</button>
+      <button type="button" id="lang-fr" aria-pressed="false">FR</button>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+<section class="hero">
+  <div class="eyebrow" data-i18n="eyebrow">The practical tools directory</div>
+  <h1 data-i18n="heroTitle">Find the right tools to work smarter.</h1>
+  <p data-i18n="heroText">Explore useful digital tools for creators, freelancers and small businesses — all in one simple place.</p>
+  <form class="search" id="searchForm">
+    <input id="searchInput" type="search" placeholder="Search tools or categories…" aria-label="Search tools">
+    <button data-i18n="searchButton">Find tools</button>
+  </form>
+</section>
+<div class="sectionhead"><div><h2 data-i18n="directoryTitle">Explore the directory</h2><p data-i18n="directoryText">Hand-picked categories to help you get started.</p></div></div>
+<div class="filters" id="filters">
+  <button class="filter active" data-cat="All" data-i18n="all">All tools</button>
+  <button class="filter" data-cat="AI & Productivity" data-i18n="ai">AI & productivity</button>
+  <button class="filter" data-cat="Design" data-i18n="design">Design</button>
+  <button class="filter" data-cat="Marketing" data-i18n="marketing">Marketing</button>
+  <button class="filter" data-cat="Business" data-i18n="business">Business</button>
+</div>
+<section class="grid" id="grid">
+  <article class="card" data-cat="AI & Productivity" data-search="ai writing productivity content"><div class="icon">✍️</div><div class="tag" data-i18n="ai">AI & productivity</div><h3 data-i18n="card1Title">AI writing assistants</h3><p data-i18n="card1Text">Tools that can help draft, edit and organize written content.</p><a class="btn" href="mailto:YOUR_EMAIL?subject=Add%20an%20AI%20writing%20tool" data-i18n="suggest">Suggest a tool</a></article>
+  <article class="card" data-cat="Design" data-search="graphic design images visuals logo"><div class="icon">🎨</div><div class="tag" data-i18n="design">Design</div><h3 data-i18n="card2Title">Design & visual tools</h3><p data-i18n="card2Text">Explore tools for graphics, presentations, social posts and branding.</p><a class="btn" href="mailto:YOUR_EMAIL?subject=Add%20a%20design%20tool" data-i18n="suggest">Suggest a tool</a></article>
+  <article class="card" data-cat="Marketing" data-search="email marketing social media seo"><div class="icon">📣</div><div class="tag" data-i18n="marketing">Marketing</div><h3 data-i18n="card3Title">Marketing tools</h3><p data-i18n="card3Text">Discover services for email campaigns, social media and audience growth.</p><a class="btn" href="mailto:YOUR_EMAIL?subject=Add%20a%20marketing%20tool" data-i18n="suggest">Suggest a tool</a></article>
+  <article class="card" data-cat="Business" data-search="invoicing accounting business payments"><div class="icon">💼</div><div class="tag" data-i18n="business">Business</div><h3 data-i18n="card4Title">Small-business essentials</h3><p data-i18n="card4Text">Useful services for invoices, planning, customer work and operations.</p><a class="btn" href="mailto:YOUR_EMAIL?subject=Add%20a%20business%20tool" data-i18n="suggest">Suggest a tool</a></article>
+  <article class="card" data-cat="AI & Productivity" data-search="automation workflow time saving"><div class="icon">⚡</div><div class="tag" data-i18n="ai">AI & productivity</div><h3 data-i18n="card5Title">Automation tools</h3><p data-i18n="card5Text">Find ways to connect everyday apps and reduce repetitive tasks.</p><a class="btn" href="mailto:YOUR_EMAIL?subject=Add%20an%20automation%20tool" data-i18n="suggest">Suggest a tool</a></article>
+  <article class="card" data-cat="Business" data-search="freelance portfolio client projects"><div class="icon">🌍</div><div class="tag" data-i18n="business">Business</div><h3 data-i18n="card6Title">Freelancer toolkit</h3><p data-i18n="card6Text">Resources for portfolios, client projects and independent work.</p><a class="btn" href="mailto:YOUR_EMAIL?subject=Add%20a%20freelance%20tool" data-i18n="suggest">Suggest a tool</a></article>
+</section>
+<div class="empty" id="empty" data-i18n="empty">No matching categories yet. Try another search.</div>
+<div class="note"><strong data-i18n="transparencyLabel">Transparency:</strong> <span data-i18n="transparencyText">Some links on this site may eventually be affiliate links. If you buy through them, the site may earn a commission at no extra cost to you. We will clearly label affiliate links. This starter version contains no active affiliate links or paid endorsements.</span></div>
+</main>
+<footer class="wrap footer"><span>© <span id="year"></span> SmartDeals Global</span><span data-i18n="footer">Contact: replace YOUR_EMAIL before publishing · Privacy policy to be added</span></footer>
+<script>
+const translations = {
+  en: {
+    tagline:"Useful tools. Smarter work.", eyebrow:"The practical tools directory",
+    heroTitle:"Find the right tools to work smarter.",
+    heroText:"Explore useful digital tools for creators, freelancers and small businesses — all in one simple place.",
+    searchPlaceholder:"Search tools or categories…", searchLabel:"Search tools", searchButton:"Find tools",
+    directoryTitle:"Explore the directory", directoryText:"Hand-picked categories to help you get started.",
+    all:"All tools", ai:"AI & productivity", design:"Design", marketing:"Marketing", business:"Business",
+    card1Title:"AI writing assistants",card1Text:"Tools that can help draft, edit and organize written content.",
+    card2Title:"Design & visual tools",card2Text:"Explore tools for graphics, presentations, social posts and branding.",
+    card3Title:"Marketing tools",card3Text:"Discover services for email campaigns, social media and audience growth.",
+    card4Title:"Small-business essentials",card4Text:"Useful services for invoices, planning, customer work and operations.",
+    card5Title:"Automation tools",card5Text:"Find ways to connect everyday apps and reduce repetitive tasks.",
+    card6Title:"Freelancer toolkit",card6Text:"Resources for portfolios, client projects and independent work.",
+    suggest:"Suggest a tool",empty:"No matching categories yet. Try another search.",
+    transparencyLabel:"Transparency:",transparencyText:"Some links on this site may eventually be affiliate links. If you buy through them, the site may earn a commission at no extra cost to you. We will clearly label affiliate links. This starter version contains no active affiliate links or paid endorsements.",
+    footer:"Contact: replace YOUR_EMAIL before publishing · Privacy policy to be added"
+  },
+  fr: {
+    tagline:"Les bons outils. Un travail plus efficace.", eyebrow:"L'annuaire pratique des outils numériques",
+    heroTitle:"Trouvez les bons outils pour travailler plus intelligemment.",
+    heroText:"Découvrez des outils numériques utiles aux créateurs, aux freelances et aux petites entreprises, réunis au même endroit.",
+    searchPlaceholder:"Rechercher un outil ou une catégorie…", searchLabel:"Rechercher des outils", searchButton:"Rechercher",
+    directoryTitle:"Explorer l'annuaire", directoryText:"Des catégories sélectionnées pour vous aider à démarrer.",
+    all:"Tous les outils", ai:"IA et productivité", design:"Design", marketing:"Marketing", business:"Entreprise",
+    card1Title:"Assistants de rédaction IA",card1Text:"Des outils pour rédiger, corriger et organiser vos contenus.",
+    card2Title:"Outils de design et visuels",card2Text:"Découvrez des outils pour créer des visuels, présentations, publications et identités de marque.",
+    card3Title:"Outils marketing",card3Text:"Découvrez des services pour les campagnes e-mail, les réseaux sociaux et le développement de votre audience.",
+    card4Title:"Essentiels pour petites entreprises",card4Text:"Des services utiles pour la facturation, la planification, les clients et la gestion quotidienne.",
+    card5Title:"Outils d'automatisation",card5Text:"Connectez vos applications et réduisez les tâches répétitives.",
+    card6Title:"Boîte à outils pour freelances",card6Text:"Des ressources pour les portfolios, les projets clients et le travail indépendant.",
+    suggest:"Suggérer un outil",empty:"Aucun résultat correspondant. Essayez une autre recherche.",
+    transparencyLabel:"Transparence :",transparencyText:"Certains liens de ce site pourront être des liens affiliés. Si vous effectuez un achat par leur intermédiaire, le site pourra recevoir une commission sans frais supplémentaires pour vous. Les liens affiliés seront clairement signalés. Cette première version ne contient aucun lien affilié actif ni partenariat rémunéré.",
+    footer:"Contact : remplacez YOUR_EMAIL avant la publication · Politique de confidentialité à ajouter"
+  }
+};
+const cards=[...document.querySelectorAll('.card')],filters=[...document.querySelectorAll('.filter')],input=document.getElementById('searchInput');
+let category='All', language='en';
+function update(){
+  const q=input.value.trim().toLowerCase();let shown=0;
+  cards.forEach(c=>{const ok=(category==='All'||c.dataset.cat===category)&&(!q||(c.dataset.search+' '+c.innerText).toLowerCase().includes(q));c.style.display=ok?'flex':'none';if(ok)shown++});
+  document.getElementById('empty').style.display=shown?'none':'block';
+}
+function setLanguage(lang){
+  language=lang;const t=translations[lang];document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;if(t[key])el.textContent=t[key]});
+  input.placeholder=t.searchPlaceholder;input.setAttribute('aria-label',t.searchLabel);
+  document.getElementById('lang-en').classList.toggle('active',lang==='en');
+  document.getElementById('lang-fr').classList.toggle('active',lang==='fr');
+  document.getElementById('lang-en').setAttribute('aria-pressed',String(lang==='en'));
+  document.getElementById('lang-fr').setAttribute('aria-pressed',String(lang==='fr'));
+  document.title=lang==='fr'?'SmartDeals Global — Trouvez les outils pour mieux travailler':'SmartDeals Global — Find tools that help you work smarter';
+  try{localStorage.setItem('smartdeals-language',lang)}catch(e){}
+  update();
+}
+filters.forEach(b=>b.addEventListener('click',()=>{category=b.dataset.cat;filters.forEach(x=>x.classList.toggle('active',x===b));update()}));
+document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();update()});
+input.addEventListener('input',update);
+document.getElementById('lang-en').addEventListener('click',()=>setLanguage('en'));
+document.getElementById('lang-fr').addEventListener('click',()=>setLanguage('fr'));
+document.getElementById('year').textContent=new Date().getFullYear();
+let saved='en';try{saved=localStorage.getItem('smartdeals-language')||'en'}catch(e){}setLanguage(saved);
+</script>
+</body></html>
